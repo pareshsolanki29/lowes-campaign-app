@@ -1,0 +1,28 @@
+.main-content {
+  border: 0.25px solid red;
+  min-height: 50vh;
+  margin: 2vh;
+  align-content: center;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 10vw;
+  margin: 5vw;
+  align-content: center;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: 200;
+}
+.table {
+  align-content: center;
+}
+
+h3 {
+  font-weight: 300;
+}

@@ -1,0 +1,6 @@
+.footer-container {
+  display: flex;
+  border: 0.25px solid red;
+  min-height: 15vh;
+  margin: 2vh;
+}

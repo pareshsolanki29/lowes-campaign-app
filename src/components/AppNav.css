@@ -1,0 +1,48 @@
+.AppNav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  border: 0.25px solid red;
+  margin: 2vh;
+}
+.logo {
+  width: 30vh;
+  align-items: center;
+  align-items: left;
+  padding-left: 2vh;
+  margin-left: 2vh;
+  padding-top: 2vh;
+  margin-top: 2vh;
+  padding-bottom: 2vh;
+  margin-bottom: 2vh;
+}
+
+.logo_text {
+  flex-direction: column;
+  align-items: left;
+  padding-top: 5vh;
+  margin-top: 8vh;
+  text-align: bottom;
+  font-weight: 100;
+}
+
+.entry {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ele {
+  margin: 2vh;
+  padding: 2vh;
+  border: 0.25px black solid;
+  min-width: 8vw;
+  margin-top: 7vh;
+}
+
+.user-info {
+  display: inline-flex;
+  flex-flow: row wrap;
+}
