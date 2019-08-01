@@ -2,6 +2,7 @@ import React from "react";
 import "./Content.css";
 import Button from "@material-ui/core/Button";
 import ContentTable from "./Table";
+// import EnhancedTable from "./paginationTable";
 const Content = () => {
   return (
     <div className="main-content">
@@ -15,6 +16,7 @@ const Content = () => {
           </span>
         </div>
         <div className="table" />
+        {/* <EnhancedTable /> */}
         <ContentTable />
       </div>
     </div>
