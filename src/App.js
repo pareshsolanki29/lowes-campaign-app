@@ -4,7 +4,6 @@ import "./App.css";
 import AppNav from "./components/AppNav.jsx";
 import Footer from "./components/Footer";
 import Content from "./components/Content/Content";
-
 function App() {
   return (
     <div className="App">

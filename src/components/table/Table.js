@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import EnhancedTableHead from "./tableHead";
 import { lighten, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -97,10 +98,33 @@ const ContentTable = () => {
       console.log("Cleanup");
     };
   }, []);
+  function handleRequestSort(event, property) {
+    const isDesc = orderBy === property && order === "desc";
+    setOrder(isDesc ? "asc" : "desc");
+    setOrderBy(property);
+  }
+
+  function handleSelectAllClick(event) {
+    if (event.target.checked) {
+      const newSelecteds = campaignList.map(n => n.name);
+      setSelected(newSelecteds);
+      return;
+    }
+    setSelected([]);
+  }
 
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
+        {/* <EnhancedTableHead
+          classes={classes}
+          numSelected={selected.length}
+          order={order}
+          orderBy={orderBy}
+          onSelectAllClick={handleSelectAllClick}
+          onRequestSort={handleRequestSort}
+          rowCount={campaignList.length}
+        /> */}
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
@@ -111,6 +135,7 @@ const ContentTable = () => {
             <TableCell align="left">Clear</TableCell>
           </TableRow>
         </TableHead>
+
         <TableBody>
           {stableSort(campaignList, getSorting(order, orderBy))
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
