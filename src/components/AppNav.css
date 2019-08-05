@@ -9,7 +9,7 @@
   width: 30vh;
   align-items: center;
   align-items: left;
-  padding-left: 2vh;
+  /* padding-left: 2vh; */
   margin-left: 2vh;
   padding-top: 2vh;
   margin-top: 2vh;
@@ -18,20 +18,16 @@
 }
 
 .logo_text {
-  flex-direction: column;
   align-items: left;
   padding-top: 5vh;
   margin-top: 8vh;
-  text-align: bottom;
+
   font-weight: 100;
 }
-
 .entry {
   list-style: none;
   display: flex;
   align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
 }
 
 .ele {
@@ -43,6 +39,18 @@
 }
 
 .user-info {
-  display: inline-flex;
-  flex-flow: row wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-left: 10vw;
+  justify-content: space-between;
+}
+
+.user-info > h6 {
+  margin-top: 5vh;
+}
+
+.user-info > svg {
+  margin-top: 15px;
+  margin-left: 2vw;
 }

@@ -6,19 +6,13 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
 import { makeStyles } from "@material-ui/core/styles";
-// import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-// import { blockStatement } from "@babel/types";
-// import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
 
 export default function CreateCampaign() {
-  const [open, setOpen] = React.useState(false);
-
   function handleClose() {
     setOpen(false);
   }
@@ -29,102 +23,95 @@ export default function CreateCampaign() {
   const useStyles = makeStyles(theme => ({
     container: {
       display: "flex",
-      flexWrap: "wrap",
-      width: "100vw"
+      flexWrap: "wrap"
     },
     textField: {
-      marginLeft: theme.spacing(1),
+      marginLeft: theme.spacing(5),
       marginRight: theme.spacing(1),
-      display: "block"
+      width: 450
     },
     dense: {
       marginTop: theme.spacing(2)
-    },
-    MuiDialogPaper: {
-      width: "100vw"
     },
     group: {
       margin: theme.spacing(1, 0)
     },
     formControl: {
-      margin: theme.spacing(3)
+      margin: theme.spacing(1),
+      alignItems: "flex-start"
+      //   minWidth: 120
     }
   }));
 
-  const handleChange = name => event => {
-    setValues({ ...values, [name]: event.target.value });
+  const classes = useStyles();
+  const handleChange = name => ({ target: { value } }) => {
+    setValues({
+      ...values,
+      [name]: value
+    });
   };
   const [values, setValues] = React.useState({
-    name: "Halloween",
-    location: " Someplace",
-    type: "New Camp",
-    status: true
+    name: " ",
+    location: " ",
+    type: " ",
+    status: ""
   });
-  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
   return (
     <Fragment>
-      <Button variant="contained" color="primary" onClick={handleOpen}>
-        +CREATE NEW
-      </Button>
       <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
-        // className={classes.container}
       >
         <DialogTitle id="form-dialog-title">Create New Campaign</DialogTitle>
-        <DialogContent>
-          <DialogContentText />
+        <DialogContent className={classes.container}>
+          <form>
+            {" "}
+            <TextField
+              id="standard-name"
+              className={classes.textField}
+              label="Name"
+              value={values.name}
+              onChange={handleChange("name")}
+              margin="normal"
+            />
+            <TextField
+              id="standard-name"
+              className={classes.textField}
+              label="Location"
+              value={values.location}
+              onChange={handleChange("location")}
+              margin="normal"
+            />
+            <TextField
+              id="standard-name"
+              className={classes.textField}
+              label="Type"
+              value={values.type}
+              onChange={handleChange("type")}
+              margin="normal"
+            />
+            <FormControl className={classes.textField}>
+              <InputLabel htmlFor="demo-controlled-open-select">
+                Status
+              </InputLabel>
+              <Select
+                onOpen={handleOpen}
+                value={values.status}
+                onChange={handleChange("status")}
+                inputProps={{
+                  name: "status",
+                  id: "status-simple"
+                }}
+              >
+                <MenuItem value="valid">Valid</MenuItem>
+                <MenuItem value="invalid">Invalid</MenuItem>
+              </Select>
+            </FormControl>
+          </form>
         </DialogContent>
-        <form>
-          {" "}
-          <TextField
-            id="standard-name"
-            className={classes.textField}
-            label="Name"
-            value={values.name}
-            onChange={handleChange("name")}
-            margin="normal"
-          />
-          <TextField
-            id="standard-name"
-            className={classes.textField}
-            label="Location"
-            value={values.location}
-            onChange={handleChange("name")}
-            margin="normal"
-          />
-          <TextField
-            id="standard-name"
-            className={classes.textField}
-            label="Type"
-            value={values.type}
-            onChange={handleChange("name")}
-            margin="normal"
-          />
-          <FormControl component="fieldset" className={classes.formControl}>
-            <FormLabel component="legend">Status</FormLabel>
-            <RadioGroup
-              aria-label="status"
-              className={classes.group}
-              name="status"
-              value={values.status}
-              onChange={handleChange}
-            >
-              <FormControlLabel
-                value="Active"
-                control={<Radio />}
-                label="Active"
-              />
-              <FormControlLabel
-                value="Inactive"
-                control={<Radio />}
-                label="Inactive"
-              />
-            </RadioGroup>
-          </FormControl>
-        </form>
-        <DialogActions>
+        <DialogActions className={classes.contain}>
           <Button onClick={handleClose} color="primary" variant="contained">
             Create
           </Button>

@@ -116,15 +116,6 @@ const ContentTable = () => {
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
-        {/* <EnhancedTableHead
-          classes={classes}
-          numSelected={selected.length}
-          order={order}
-          orderBy={orderBy}
-          onSelectAllClick={handleSelectAllClick}
-          onRequestSort={handleRequestSort}
-          rowCount={campaignList.length}
-        /> */}
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
