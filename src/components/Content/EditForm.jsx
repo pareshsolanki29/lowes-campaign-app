@@ -19,19 +19,21 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     flexDirection: "column",
+    flexWrap: "wrap",
     justifyContent: "center"
   },
 
   textField: {
-    // marginLeft: theme.spacing(5),
-    // marginRight: theme.spacing(1),
+    marginLeft: theme.spacing(5),
+    marginRight: theme.spacing(1),
     minWidth: "25vw",
     textAlign: "left"
   },
   form: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "center"
+    justifyContent: "center",
+    margin: "2vh"
   },
   paper: {
     padding: theme.spacing(2),
@@ -43,13 +45,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 const EditForm = () => {
-  const [labelWidth, setLabelWidth] = React.useState(0);
+  // const [labelWidth, setLabelWidth] = React.useState(0);
 
   const classes = useStyles();
 
   return (
     <Fragment>
-      <h2 style={{ marginRight: "25vw" }}> Create New Form</h2>
+      <h2 style={{ marginRight: "45vw" }}> Create New Campaign</h2>
       <form className={classes.root}>
         <FormControl className={classes.form}>
           <h3 className={classes.textField}>Campaign Name</h3>
@@ -61,7 +63,7 @@ const EditForm = () => {
             className={classes.textField}
             input={
               <OutlinedInput
-                labelWidth={labelWidth}
+                // labelWidth={labelWidth}
                 name="age"
                 id="outlined-age-simple"
               />
@@ -71,6 +73,86 @@ const EditForm = () => {
             <MenuItem value={20}>Twenty</MenuItem>
             <MenuItem value={30}>Thirty</MenuItem>
           </Select>
+        </FormControl>
+        <FormControl className={classes.form}>
+          <h3 className={classes.textField}>Select Location</h3>
+          <Select
+            className={classes.textField}
+            input={
+              <OutlinedInput
+                // labelWidth={labelWidth}
+                name="age"
+                id="outlined-age-simple"
+              />
+            }
+          >
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl className={classes.form}>
+          <h3 className={classes.textField}>Select Custom Script</h3>
+          <Select
+            className={classes.textField}
+            input={
+              <OutlinedInput
+                // labelWidth={labelWidth}
+                name="age"
+                id="outlined-age-simple"
+              />
+            }
+          >
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl className={classes.form}>
+          <h3 className={classes.textField}>Domain</h3>
+          <div className={classes.root}>
+            <TextField
+              className={classes.textField}
+              style={{ marginBottom: "2vh" }}
+              variant="outlined"
+            />
+            <TextField className={classes.textField} variant="outlined" />
+          </div>
+        </FormControl>
+        <FormControl className={classes.form}>
+          <h3 className={classes.textField}>Campaign Name</h3>
+          <RadioGroup
+            className={classes.textField}
+            aria-label="position"
+            name="position"
+            // value={value}
+            // onChange={handleChange}
+            row
+          >
+            <FormControlLabel
+              value="inactive"
+              control={<Radio color="primary" />}
+              label="Inactive"
+              labelPlacement="inactive"
+            />
+            <FormControlLabel
+              style={{ marginLeft: "2vh" }}
+              value="active"
+              control={<Radio color="primary" />}
+              label="Active"
+              labelPlacement="active"
+            />
+          </RadioGroup>
+        </FormControl>
+        <FormControl className={classes.form}>
+          <h3 className={classes.textField}>Preview Mode</h3>
+          <div className={classes.root}>
+            <TextField className={classes.textField} variant="outlined" />
+            <p>
+              Copy String and paste it at the end of the page URL in selected{" "}
+              domain to preview Campaign
+            </p>
+          </div>
         </FormControl>
       </form>
     </Fragment>
