@@ -6,19 +6,29 @@
 .NavContent {
   display: flex;
   flex-direction: row;
+
   flex-wrap: nowrap;
   margin: 1vw;
+  margin-left: 2vh;
+}
+.logo-section {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  margin: 1vw;
+  margin-left: 2vh;
 }
 .logo {
   width: 7vw;
   height: 7vh;
-  margin-left: 2vh;
-  margin-top: 6vh;
+
+  margin-bottom: 3vh;
 }
 
 .logo_text {
-  align-items: left;
-  margin-top: 10vh;
+  /* align-items: left; */
+  /* margin-top: 10vh; */
   font-weight: 100;
 }
 .entry {

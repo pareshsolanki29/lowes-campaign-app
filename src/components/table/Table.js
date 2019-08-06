@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
+import TableTitle from "./tableTitle";
 import axios from "axios";
 import EnhancedTableHead from "./tableHead";
 import { lighten, makeStyles } from "@material-ui/core/styles";
@@ -62,7 +63,9 @@ function getSorting(order, orderBy) {
     : (a, b) => -desc(a, b, orderBy);
 }
 
-const ContentTable = () => {
+const ContentTable = props => {
+  const isEdit = props.isEdit;
+  console.log("this is:" + isEdit);
   const classes = useStyles();
   const [campaignList, setcampaignList] = useState([]);
   const [order, setOrder] = React.useState("asc");
@@ -114,64 +117,67 @@ const ContentTable = () => {
   }
 
   return (
-    <Paper className={classes.root}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell align="left">Location</TableCell>
-            <TableCell align="left">Type</TableCell>
-            <TableCell align="left">Status</TableCell>
-            <TableCell align="left">Last Updated</TableCell>
-            <TableCell align="left">Clear</TableCell>
-          </TableRow>
-        </TableHead>
+    <Fragment>
+      <TableTitle isEdit="isEdit" handleOpen="handleOpen" />
+      <Paper className={classes.root}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell align="left">Location</TableCell>
+              <TableCell align="left">Type</TableCell>
+              <TableCell align="left">Status</TableCell>
+              <TableCell align="left">Last Updated</TableCell>
+              <TableCell align="left">Clear</TableCell>
+            </TableRow>
+          </TableHead>
 
-        <TableBody>
-          {stableSort(campaignList, getSorting(order, orderBy))
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map(row => (
-              <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
-                  <div>{row.name}</div>
-                </TableCell>
-                <TableCell align="left">
-                  <div>{row.location}</div>
-                </TableCell>
-                <TableCell align="left">
-                  <div>{row.type}</div>
-                </TableCell>
-                <TableCell align="left">
-                  <div>{row.status}</div>
-                </TableCell>
-                <TableCell align="left">
-                  <div>{row.last_updtae}</div>
-                </TableCell>
-                <TableCell align="left">
-                  <DeleteIcon className={classes.icon} />
-                  <EditIcon className={classes.icon} />
-                  <FileCopyIcon className={classes.icon} />
-                </TableCell>
-              </TableRow>
-            ))}
-        </TableBody>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={campaignList.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          backIconButtonProps={{
-            "aria-label": "previous page"
-          }}
-          nextIconButtonProps={{
-            "aria-label": "next page"
-          }}
-          onChangePage={handleChangePage}
-          onChangeRowsPerPage={handleChangeRowsPerPage}
-        />
-      </Table>
-    </Paper>
+          <TableBody>
+            {stableSort(campaignList, getSorting(order, orderBy))
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map(row => (
+                <TableRow key={row.name}>
+                  <TableCell component="th" scope="row">
+                    <div>{row.name}</div>
+                  </TableCell>
+                  <TableCell align="left">
+                    <div>{row.location}</div>
+                  </TableCell>
+                  <TableCell align="left">
+                    <div>{row.type}</div>
+                  </TableCell>
+                  <TableCell align="left">
+                    <div>{row.status}</div>
+                  </TableCell>
+                  <TableCell align="left">
+                    <div>{row.last_updtae}</div>
+                  </TableCell>
+                  <TableCell align="left">
+                    <DeleteIcon className={classes.icon} />
+                    <EditIcon className={classes.icon} />
+                    <FileCopyIcon className={classes.icon} />
+                  </TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={campaignList.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            backIconButtonProps={{
+              "aria-label": "previous page"
+            }}
+            nextIconButtonProps={{
+              "aria-label": "next page"
+            }}
+            onChangePage={handleChangePage}
+            onChangeRowsPerPage={handleChangeRowsPerPage}
+          />
+        </Table>
+      </Paper>
+    </Fragment>
   );
 };
 

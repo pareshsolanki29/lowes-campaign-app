@@ -14,13 +14,14 @@ import FormLabel from "@material-ui/core/FormLabel";
 import InputLabel from "@material-ui/core/InputLabel";
 import InputBase from "@material-ui/core/InputBase";
 import Grid from "@material-ui/core/Grid";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
-    flexDirection: "column",
-    flexWrap: "wrap",
-    justifyContent: "center"
+    flexDirection: "column"
+    // flexWrap: "wrap",
+    // justifyContent: "center"
   },
 
   textField: {
@@ -36,9 +37,10 @@ const useStyles = makeStyles(theme => ({
     margin: "2vh"
   },
   paper: {
-    padding: theme.spacing(2),
     textAlign: "center",
-    color: theme.palette.text.secondary
+    color: theme.palette.text.secondary,
+    marginLeft: "2vw",
+    fontSize: "1rem"
   },
   top: {
     marginTop: "5vh"
@@ -48,6 +50,9 @@ const EditForm = () => {
   // const [labelWidth, setLabelWidth] = React.useState(0);
 
   const classes = useStyles();
+  const addDomain = () => {
+    console.log("g");
+  };
 
   return (
     <Fragment>
@@ -117,6 +122,9 @@ const EditForm = () => {
               variant="outlined"
             />
             <TextField className={classes.textField} variant="outlined" />
+            <p style={{ alignSelf: "flex-start" }} onClick={addDomain}>
+              Add Another Domain
+            </p>
           </div>
         </FormControl>
         <FormControl className={classes.form}>
@@ -146,13 +154,29 @@ const EditForm = () => {
         </FormControl>
         <FormControl className={classes.form}>
           <h3 className={classes.textField}>Preview Mode</h3>
-          <div className={classes.root}>
+          <div style={{ flexDirection: "column" }}>
             <TextField className={classes.textField} variant="outlined" />
-            <p>
+            <p style={{ maxWidth: "27vw" }} className={classes.paper}>
               Copy String and paste it at the end of the page URL in selected{" "}
               domain to preview Campaign
             </p>
           </div>
+        </FormControl>
+        <FormControl className={classes.root}>
+          <Button
+            style={{ alignSelf: "flex-start", marginLeft: "18vw" }}
+            variant="contained"
+            color="primary"
+          >
+            Cancel
+          </Button>
+          <Button
+            style={{ alignSelf: "flex-end" }}
+            variant="contained"
+            color="primary"
+          >
+            Create Campaign
+          </Button>
         </FormControl>
       </form>
     </Fragment>
