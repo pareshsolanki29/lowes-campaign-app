@@ -1,12 +1,14 @@
 import React from "react";
 import "./AppNav.css";
-import AccountBox from "@material-ui/icons/AccountBox";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import HighlightOff from "@material-ui/icons/HighlightOff";
 import TransferWithinAStation from "@material-ui/icons/TransferWithinAStation";
 
 // import MaterialIcon from "@material/react-material-icon";
 
 const AppNav = () => {
   const options = ["Campaigns", "Workspaces", "TBD", "TBD"];
+
   return (
     <div className="AppNav">
       <div className="NavContent">
@@ -28,10 +30,10 @@ const AppNav = () => {
           })}
         </ul>
         <div className="user-info">
-          <AccountBox />
+          <AccountCircle />
           <h6>Your Name</h6>
 
-          <TransferWithinAStation />
+          <HighlightOff />
           <h6>Log Out</h6>
         </div>
       </div>

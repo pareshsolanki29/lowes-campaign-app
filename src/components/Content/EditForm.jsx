@@ -1,8 +1,12 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import Icon from "@material-ui/core/Icon";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import { makeStyles, withStyles, fade } from "@material-ui/core/styles";
 import Radio from "@material-ui/core/Radio";
@@ -28,13 +32,21 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(5),
     marginRight: theme.spacing(1),
     minWidth: "25vw",
-    textAlign: "left"
+    textAlign: "left",
+    borderRadius: "0"
   },
   form: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     margin: "2vh"
+  },
+  button: {
+    backgroundColor: "#24a6c7",
+    color: "white",
+    paddingLeft: "2vw",
+    paddingRight: "2vw",
+    borderRadius: "0"
   },
   paper: {
     textAlign: "center",
@@ -48,11 +60,31 @@ const useStyles = makeStyles(theme => ({
 }));
 const EditForm = () => {
   // const [labelWidth, setLabelWidth] = React.useState(0);
+  const [values, setValues] = React.useState({
+    type: "",
+    script: "",
+    location: ""
+  });
+
+  const handleChange = name => event => {
+    setValues({ ...values, [name]: event.target.value });
+  };
 
   const classes = useStyles();
-  const addDomain = () => {
-    console.log("g");
-  };
+  const [fields, setFields] = useState([{ value: null }]);
+
+  function handleAdd() {
+    const values = [...fields];
+    values.push({ value: null });
+    setFields(values);
+  }
+
+  function handleRemove(i) {
+    const values = [...fields];
+    values.splice(i, 1);
+    setFields(values);
+    console.log(i);
+  }
 
   return (
     <Fragment>
@@ -69,14 +101,17 @@ const EditForm = () => {
             input={
               <OutlinedInput
                 // labelWidth={labelWidth}
-                name="age"
+                name="type"
                 id="outlined-age-simple"
+                value={values.type}
+                onChange={handleChange("type")}
               />
             }
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value={"Recommendtion(RECO)"}>
+              Recommendtion(RECO)
+            </MenuItem>
+            <MenuItem value={" "} />
           </Select>
         </FormControl>
         <FormControl className={classes.form}>
@@ -86,14 +121,15 @@ const EditForm = () => {
             input={
               <OutlinedInput
                 // labelWidth={labelWidth}
-                name="age"
+                name="location"
                 id="outlined-age-simple"
+                value={values.location}
+                onChange={handleChange("location")}
               />
             }
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value={"lwscom-pdp-cav"}>lwscom-pdp-cav</MenuItem>
+            <MenuItem value={" "} />
           </Select>
         </FormControl>
         <FormControl className={classes.form}>
@@ -103,14 +139,14 @@ const EditForm = () => {
             input={
               <OutlinedInput
                 // labelWidth={labelWidth}
-                name="age"
+                name="script"
                 id="outlined-age-simple"
+                value={values.script}
+                onChange={handleChange("script")}
               />
             }
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value={" "} />
           </Select>
         </FormControl>
         <FormControl className={classes.form}>
@@ -118,11 +154,39 @@ const EditForm = () => {
           <div className={classes.root}>
             <TextField
               className={classes.textField}
-              style={{ marginBottom: "2vh" }}
+              // style={{ marginBottom: "1vh" }}
               variant="outlined"
             />
-            <TextField className={classes.textField} variant="outlined" />
-            <p style={{ alignSelf: "flex-start" }} onClick={addDomain}>
+            {/* <TextField className={classes.textField} variant="outlined" /> */}
+            {fields.map((field, idx) => {
+              return (
+                <div className={classes.root} key={`${field}-${idx}`}>
+                  <TextField
+                    className={classes.textField}
+                    onChange={e => handleChange(idx, e)}
+                    style={{ marginTop: "1vh" }}
+                    variant="outlined"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton aria-label="delete" color="primary">
+                            <DeleteIcon onClick={() => handleRemove(idx)} />
+                          </IconButton>
+                        </InputAdornment>
+                      )
+                    }}
+                  />
+                </div>
+              );
+            })}
+            <p
+              style={{
+                marginRight: "15vw",
+                fontSize: "1rem"
+              }}
+              onClick={() => handleAdd()}
+              className={classes.paper}
+            >
               Add Another Domain
             </p>
           </div>
@@ -155,26 +219,36 @@ const EditForm = () => {
         <FormControl className={classes.form}>
           <h3 className={classes.textField}>Preview Mode</h3>
           <div style={{ flexDirection: "column" }}>
-            <TextField className={classes.textField} variant="outlined" />
-            <p style={{ maxWidth: "27vw" }} className={classes.paper}>
+            <TextField
+              className={classes.textField}
+              variant="outlined"
+              placeholder="?persboxHighlight=1"
+            />
+            <p
+              style={{ maxWidth: "27vw", marginLeft: "3vw" }}
+              className={classes.paper}
+            >
               Copy String and paste it at the end of the page URL in selected{" "}
               domain to preview Campaign
             </p>
           </div>
         </FormControl>
-        <FormControl className={classes.root}>
+        <FormControl
+          className={classes.form}
+          style={{
+            justifyContent: "space-between"
+          }}
+        >
           <Button
-            style={{ alignSelf: "flex-start", marginLeft: "18vw" }}
+            className={classes.button}
+            style={{
+              marginLeft: "18vw"
+            }}
             variant="contained"
-            color="primary"
           >
             Cancel
           </Button>
-          <Button
-            style={{ alignSelf: "flex-end" }}
-            variant="contained"
-            color="primary"
-          >
+          <Button className={classes.button} variant="contained">
             Create Campaign
           </Button>
         </FormControl>

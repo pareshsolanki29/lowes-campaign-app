@@ -18,6 +18,7 @@ const Content = () => {
         <div className="table" />
         {/* <ContentTable isEdit="isEdit" handleOpen={handleOpen} /> */}
         <EditForm />
+        {/* <ContentTable /> */}
       </div>
     </div>
   );
