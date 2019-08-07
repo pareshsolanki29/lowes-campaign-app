@@ -1,0 +1,57 @@
+.AppNav {
+  border: 0.25px solid red;
+  margin: 2%;
+}
+
+.NavContent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 2%;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.logo {
+  width: 11%;
+  height: 10%;
+  margin-top: 4%;
+}
+
+.logo_text {
+  font-weight: 100;
+  margin-top: 6.5%;
+}
+.entry {
+  margin-top: 6%;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.ele {
+  padding: 1%;
+  border: 0.25px black solid;
+  min-width: 8vw;
+  margin-bottom: 3%;
+  margin-left: 3%;
+  padding: 2%;
+  padding-right: 3%;
+  padding-left: 3%;
+  font-size: 1rem;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: row;
+  margin-left: 15%;
+}
+
+.user-info > h6 {
+  margin-top: 2vh;
+}
+
+.user-info > svg {
+  margin-top: 1vh;
+  margin-left: 2vw;
+}

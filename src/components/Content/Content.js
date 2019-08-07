@@ -1,26 +1,23 @@
-import React, { useState } from "react";
-import "./Content.css";
+import React from "react";
+import "./content.css";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import ContentTable from "../table/table";
+import EditForm from "../edit/editForm";
 
-import ContentTable from "../table/Table";
-import EditForm from "./EditForm.jsx";
-
-// import EnhancedTable from "./paginationTable";
 const Content = () => {
-  // let isEdit = useState(true);
-  // const handleOpen = () => {
-  //   console.log(isEdit);
-  //   return (isEdit = !isEdit);
-  // };
-
   return (
-    <div className="main-content">
-      <div className="center-content">
-        <div className="table" />
-        {/* <ContentTable isEdit="isEdit" handleOpen={handleOpen} /> */}
-        <EditForm />
-        {/* <ContentTable /> */}
+    <Router>
+      <div className="main-content">
+        <div className="center-content">
+          <div className="table" />
+          <Route exact path="/" component={ContentTable} />
+          <Route exact path="/editForm" component={EditForm} />
+          <Link to="editForm">EditForm</Link>
+
+          {/* <EditForm /> */}
+        </div>
       </div>
-    </div>
+    </Router>
   );
 };
 

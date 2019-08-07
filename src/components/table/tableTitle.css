@@ -1,0 +1,9 @@
+.create {
+  align-self: "flex-start";
+  margin-left: "18vw";
+  background-color: "#24a6c7";
+  color: "white";
+  padding-left: "2vw";
+  padding-right: "2vw";
+  border-radius: "0";
+}

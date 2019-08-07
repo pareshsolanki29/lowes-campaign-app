@@ -63,9 +63,7 @@ function getSorting(order, orderBy) {
     : (a, b) => -desc(a, b, orderBy);
 }
 
-const ContentTable = props => {
-  const isEdit = props.isEdit;
-  console.log("this is:" + isEdit);
+const ContentTable = () => {
   const classes = useStyles();
   const [campaignList, setcampaignList] = useState([]);
   const [order, setOrder] = React.useState("asc");
@@ -73,7 +71,7 @@ const ContentTable = props => {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(2);
   const emptyRows =
     rowsPerPage -
     Math.min(rowsPerPage, campaignList.length - page * rowsPerPage);
@@ -118,7 +116,7 @@ const ContentTable = props => {
 
   return (
     <Fragment>
-      <TableTitle isEdit="isEdit" handleOpen="handleOpen" />
+      <TableTitle />
       <Paper className={classes.root}>
         <Table className={classes.table}>
           <TableHead>
@@ -161,7 +159,7 @@ const ContentTable = props => {
               ))}
           </TableBody>
           <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
+            rowsPerPageOptions={[2, 5, 10, 25]}
             component="div"
             count={campaignList.length}
             rowsPerPage={rowsPerPage}

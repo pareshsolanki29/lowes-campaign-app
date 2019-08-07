@@ -2,5 +2,6 @@
   display: flex;
   border: 0.25px solid red;
   min-height: 15vh;
-  margin: 2vh;
+  margin-left: 2%;
+  margin-right: 2%;
 }

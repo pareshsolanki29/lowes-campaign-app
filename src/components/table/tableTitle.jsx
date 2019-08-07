@@ -1,11 +1,13 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
+import { BrowserRouter as Link } from "react-router-dom";
+import EditForm from "../edit/editForm";
 
-const TableTitle = props => {
-  console.log("this is isedit from TableTitle:" + props);
+const TableTitle = () => {
   return (
     <div className="title">
       <h3 className="title-text">CAMPAIGNS</h3>
+
       <Button
         style={{
           alignSelf: "flex-start",
@@ -16,8 +18,6 @@ const TableTitle = props => {
           paddingRight: "2vw",
           borderRadius: "0"
         }}
-        disabled={!props.isEdit}
-        onClick={props.handleOpen}
       >
         +CREATE NEW
       </Button>

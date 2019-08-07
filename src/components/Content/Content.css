@@ -1,7 +1,9 @@
 .main-content {
   border: 0.25px solid red;
-  min-height: 50vh;
-  margin: 2vh;
+  min-height: 50%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 2%;
   align-content: center;
 }
 

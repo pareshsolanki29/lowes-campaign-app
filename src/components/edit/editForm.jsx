@@ -1,24 +1,26 @@
 import React, { Fragment, useState } from "react";
-import TextField from "@material-ui/core/TextField";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import Icon from "@material-ui/core/Icon";
-import IconButton from "@material-ui/core/IconButton";
+import {
+  TextField,
+  Select,
+  MenuItem,
+  OutlinedInput,
+  InputAdornment,
+  IconButton,
+  makeStyles,
+  withStyles,
+  fade,
+  Radio,
+  RadioGroup,
+  FormHelperText,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+  InputLabel,
+  InputBase,
+  Grid,
+  Button
+} from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
-
-import { makeStyles, withStyles, fade } from "@material-ui/core/styles";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-import InputLabel from "@material-ui/core/InputLabel";
-import InputBase from "@material-ui/core/InputBase";
-import Grid from "@material-ui/core/Grid";
-import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -186,6 +188,7 @@ const EditForm = () => {
               }}
               onClick={() => handleAdd()}
               className={classes.paper}
+              style={{ color: "blue" }}
             >
               Add Another Domain
             </p>
