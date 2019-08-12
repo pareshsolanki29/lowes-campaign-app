@@ -7,9 +7,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: 2%;
-  margin-left: 1%;
-  margin-right: 1%;
+  margin-left: 5%;
 }
 
 .logo {
@@ -23,35 +21,36 @@
   margin-top: 6.5%;
 }
 .entry {
-  margin-top: 6%;
-  list-style: none;
+  margin-top: 5.5%;
+  list-style-type: none;
   display: flex;
-  align-items: center;
+  align-content: center;
 }
 
 .ele {
-  padding: 1%;
   border: 0.25px black solid;
-  min-width: 8vw;
-  margin-bottom: 3%;
-  margin-left: 3%;
-  padding: 2%;
-  padding-right: 3%;
-  padding-left: 3%;
-  font-size: 1rem;
+  width: 10vw;
+  height: 5vh;
+  margin: 2%;
+}
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
 }
 
 .user-info {
   display: flex;
   flex-direction: row;
-  margin-left: 15%;
+  justify-content: space-between;
 }
 
 .user-info > h6 {
-  margin-top: 2vh;
+  display: inline;
 }
 
 .user-info > svg {
-  margin-top: 1vh;
-  margin-left: 2vw;
+  margin-top: 10%;
 }

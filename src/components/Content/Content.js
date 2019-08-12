@@ -9,12 +9,11 @@ const Content = () => {
     <Router>
       <div className="main-content">
         <div className="center-content">
-          <div className="table" />
-          <Route exact path="/" component={ContentTable} />
-          <Route exact path="/editForm" component={EditForm} />
-          <Link to="editForm">EditForm</Link>
-
-          {/* <EditForm /> */}
+          <div className="table">
+            <Route path="/Campaigns" component={ContentTable} />
+            <Route path="/editForm" component={EditForm} />
+            {/* <Link to="editForm">EditForm</Link> */}
+          </div>
         </div>
       </div>
     </Router>
